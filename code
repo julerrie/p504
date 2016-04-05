@@ -1,0 +1,9 @@
+f = open('all_playlists.txt', 'r')
+l=f.read().splitlines()
+d={'playlist':'','popularity':''}
+c=[]
+for item in l:
+    tmp=item.split('\t')
+    (d['playlist'],d['popularity'])=tmp[0],tmp[1]
+    c.append(d)
+print c
