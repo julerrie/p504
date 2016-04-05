@@ -1,9 +1,26 @@
 f = open('all_playlists.txt', 'r')
+song=open('song_list.txt','r')
 l=f.read().splitlines()
-d={'playlist':'','popularity':''}
 c=[]
+x=[]
+songlist1=[]
+i=0
+playlist = {}
+songlist={}
 for item in l:
-    tmp=item.split('\t')
-    (d['playlist'],d['popularity'])=tmp[0],tmp[1]
-    c.append(d)
-print c
+    key,value = item.split("\t")
+    playlist[key]=value
+f.close()
+#print d
+#print c
+#print d.keys()
+tmp = ()
+for item in song:
+    if item.__contains__('\n'):
+        tmp=item[0:-1]
+    else:
+        tmp=item
+ #   print tmp
+    print len(tmp)
+    print tmp.find('\t',[0,len(tmp)])
+song.close()
