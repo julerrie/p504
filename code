@@ -7,6 +7,7 @@ songlist1=[]
 i=0
 playlist = {}
 songlist={}
+songlist2={}
 for item in l:
     key,value = item.split("\t")
     playlist[key]=value
@@ -21,6 +22,22 @@ for item in song:
     else:
         tmp=item
  #   print tmp
-    print len(tmp)
-    print tmp.find('\t',[0,len(tmp)])
+    a=int(len(tmp))
+    b=int(tmp.find('\t'))
+    str1=tmp[0:b]
+    str2=tmp[b+1:a]
+    key,value=str1,str2
+    songlist[key]=value
 song.close()
+
+#search
+
+# name=raw_input()
+# key=name
+# print songlist[key]
+
+for y in songlist:
+    tmp = songlist[y].split("\t")
+    key,value=tmp[0],tmp[1]
+    songlist2[key]=value
+print songlist2
