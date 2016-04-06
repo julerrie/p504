@@ -29,6 +29,7 @@ for item in song:
     key,value=str1,str2
     songlist[key]=value
 song.close()
+print songlist
 
 #search
 
@@ -40,4 +41,4 @@ for y in songlist:
     tmp = songlist[y].split("\t")
     key,value=tmp[0],tmp[1]
     songlist2[key]=value
-print songlist2
+#print songlist2
