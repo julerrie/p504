@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #主要用的是dict及相关函数功能
 f = open('all_playlists.txt', 'r')
+k = open('playlist_128.txt','w')
 song=open('song_list.txt','r')
 l=f.read().splitlines()
 c=[]
@@ -10,11 +11,13 @@ i=0
 playlist = {}
 songlist={}
 songlist2={}
+
 #第一个dict 存playlist的 key是歌单 value是流行度
 for item in l:
     key,value = item.split("\t")
     playlist[key]=int(value)
 f.close()
+
 #第二个dict 存的songlist key是歌曲顺序 value是歌名和歌手
 tmp = ()
 for item in song:
@@ -29,10 +32,12 @@ for item in song:
     key,value=str1,str2
     songlist[key]=value
 song.close()
+
 #search 对应的dict 输入key 可以得到value
 # name=raw_input()
 # key=name
 # print songlist[key]
+
 #第三个dict key是歌名 value是歌手
 for y in songlist:
     tmp = songlist[y].split("\t")
@@ -68,19 +73,23 @@ sortedplaylist=sorted(playlist.items(), key=lambda d: d[1])
 #given a song, suggest the most popular playlist that song is in
 # name=raw_input()
 # pop=100
+# songinplaylist=0
 # for item in songlist:
 #     if name in songlist[item]:
 #         songname=" "+item+" "
 #         print songname
 #         for items in playlist:
 #             if songname in items:
+#                 songinplaylist=1
 #                 if playlist[items]<=pop:
 #                     pop=playlist[items]
 #                     popitems=items
-# print pop,popitems
+# if songinplaylist==0:
+#     print "no this song in playlist"
+# else:
+#     print pop,popitems
 
 #as the user starts typing a song-name, the system should start suggesting four song names based on the popularity
-# 没写完
 # name=raw_input()
 # songpop={}
 # allsongpop={}
@@ -92,13 +101,32 @@ sortedplaylist=sorted(playlist.items(), key=lambda d: d[1])
 #         for items in songlist:
 #             if songname in songlist[items]:
 #                 songnamelist=" "+items+" "
-#                 pop = 0
+#                 pop = -1
 #                 for items1 in playlist:
 #                     if songnamelist in items1:
 #                         pop=pop+playlist[items1]
+#                 if pop == -1:
+#                     break
+#                 pop=pop
 #                 songpop[songname]=pop
 #                 if pop !=0:
 #                     break
 #         allsongpop.update(songpop)
 # #                break
-# print sorted(allsongpop.items(), key=lambda d: d[1])
+# allsonglist=sorted(allsongpop.items(), key=lambda d: d[1])
+# if allsonglist == {}:
+#     print " "
+# else:
+#     print allsonglist[0:4]
+
+#loading of at most 128 playlists along with their popularities as a text file
+# listlen=len(sortedplaylist)
+# if len>=128:
+#     del sortedplaylist[128:listlen]
+# newlen=len(sortedplaylist)
+# #print sortedplaylist
+# for item in sortedplaylist:
+#     k.write(item[0])
+#     k.write("\t")
+#     k.write(str(item[1]))
+#     k.write("\n")
