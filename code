@@ -45,14 +45,15 @@ for y in songlist:
     songlist2[key]=value
 
 #输入一个新的playlist
-#print "new playlist:(split with space)"
-#addnewlist=raw_input()
-#print "new popularity:"
-#addnewpop=raw_input()
-#playlist[addnewlist]=addnewpop
-#print playlist[addnewlist]
+# print "new playlist:(split with space)"
+# addnewlist=raw_input()
+# print "new popularity:"
+# addnewpop=raw_input()
+# playlist[addnewlist]=int(addnewpop)
+# print playlist[addnewlist]
+# print addnewlist
 
-#sort 按流行度排名 如果需要按key排名 就用d[1]
+#sort 按流行度排名 如果需要按key排名 就用d[0]
 sortedplaylist=sorted(playlist.items(), key=lambda d: d[1])
 #print sortedplaylist
 
@@ -90,34 +91,34 @@ sortedplaylist=sorted(playlist.items(), key=lambda d: d[1])
 #     print pop,popitems
 
 #as the user starts typing a song-name, the system should start suggesting four song names based on the popularity
-# name=raw_input()
-# songpop={}
-# allsongpop={}
-# for item in songlist2:
-#     popall = 0
-#     if name in item:
-#         songname=item
-# #        print songname
-#         for items in songlist:
-#             if songname in songlist[items]:
-#                 songnamelist=" "+items+" "
-#                 pop = -1
-#                 for items1 in playlist:
-#                     if songnamelist in items1:
-#                         pop=pop+playlist[items1]
-#                 if pop == -1:
-#                     break
-#                 pop=pop
-#                 songpop[songname]=pop
-#                 if pop !=0:
-#                     break
-#         allsongpop.update(songpop)
-# #                break
-# allsonglist=sorted(allsongpop.items(), key=lambda d: d[1])
-# if allsonglist == {}:
-#     print " "
-# else:
-#     print allsonglist[0:4]
+name=raw_input()
+songpop={}
+allsongpop={}
+for item in songlist2:
+    popall = 0
+    if name in item:
+        songname=item
+#        print songname
+        for items in songlist:
+            if songname in songlist[items]:
+                songnamelist=" "+items+" "
+                pop = -1
+                for items1 in playlist:
+                    if songnamelist in items1:
+                        pop=pop+playlist[items1]
+                if pop == -1:
+                    break
+                pop=pop+1
+                songpop[songname]=pop
+                if pop !=0:
+                    break
+        allsongpop.update(songpop)
+#                break
+allsonglist=sorted(allsongpop.items(), key=lambda d: d[1])
+if allsonglist == {}:
+    print " "
+else:
+    print allsonglist[0:4]
 
 #loading of at most 128 playlists along with their popularities as a text file
 # listlen=len(sortedplaylist)
